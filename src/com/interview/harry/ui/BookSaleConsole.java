@@ -7,7 +7,8 @@ import com.interview.harry.business.BookSaleProcessor;
 import com.interview.harry.business.CurrentDiscountRule;
 import com.interview.harry.business.ShoppingCart;
 import com.interview.harry.constants.HarrySeries;
-
+//Desktop application for the given Book sale problem
+//Running this class, user can manage cart, view cart and checkout.
 public class BookSaleConsole {
 	private ShoppingCart cart;
 	public BookSaleConsole(ShoppingCart shoppingCart) {

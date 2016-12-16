@@ -3,7 +3,7 @@ package com.interview.harry.business;
 import java.util.EnumMap;
 
 import com.interview.harry.constants.HarrySeries;
-
+//This class maintains the cart
 public class ShoppingCart {
 	EnumMap<HarrySeries, Integer> books = new EnumMap<HarrySeries, Integer>(HarrySeries.class);
 	public void addBook(HarrySeries book, int count) {

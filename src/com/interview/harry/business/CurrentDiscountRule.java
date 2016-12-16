@@ -1,5 +1,5 @@
 package com.interview.harry.business;
-
+//This is the current discount rule class
 public class CurrentDiscountRule implements Discount{
 
 	public int oneBookDiscount() {

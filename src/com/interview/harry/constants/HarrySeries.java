@@ -1,4 +1,5 @@
 package com.interview.harry.constants;
+//This enum holds all the books 
 public enum HarrySeries {
 
 	SERIES1(1, "Harry 1", 8.0),

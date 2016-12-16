@@ -8,7 +8,9 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import com.interview.harry.constants.HarrySeries;
-
+//This is the main service class
+//this class need books and the discount rule
+//this class gives the actual price and discounted price
 public class BookSaleProcessor {
 	
 	EnumMap<HarrySeries, Integer> books;

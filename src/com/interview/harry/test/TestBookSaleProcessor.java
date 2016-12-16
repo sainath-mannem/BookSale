@@ -8,7 +8,7 @@ import com.interview.harry.business.BookSaleProcessor;
 import com.interview.harry.business.CurrentDiscountRule;
 import com.interview.harry.business.ShoppingCart;
 import com.interview.harry.constants.HarrySeries;
-
+//Test class, Scenario explained at the respective method 
 public class TestBookSaleProcessor {
 
 	@Test

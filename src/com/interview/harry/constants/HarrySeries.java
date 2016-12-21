@@ -1,5 +1,9 @@
 package com.interview.harry.constants;
-//This enum holds all the books 
+/**
+ * This enum holds all the books 
+ * @author Sainath
+ *
+ */
 public enum HarrySeries {
 
 	SERIES1(1, "Harry 1", 8.0),

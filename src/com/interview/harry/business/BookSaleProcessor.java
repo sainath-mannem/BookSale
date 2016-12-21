@@ -8,18 +8,27 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import com.interview.harry.constants.HarrySeries;
-//This is the main service class
-//this class need books and the discount rule
-//this class gives the actual price and discounted price
+/**
+ * This is the main service class
+ *this class need books and the discount rule
+ *this class gives the actual price and discounted price
+ * @author Sainath
+ *
+ */
 public class BookSaleProcessor {
 	
 	EnumMap<HarrySeries, Integer> books;
 	Discount discount;
+	
 	public BookSaleProcessor(EnumMap<HarrySeries, Integer> books, Discount discount) {
 		this.books = books;
 		this.discount = discount;
 	}
 	
+	/**
+	 * This method calculates the actual price of the books
+	 * @return actual price
+	 */
 	public Double getActualPrice() {
 		Double totalPrice = new Double(0);
 		for (Entry<HarrySeries, Integer> booksEntry : books.entrySet()) {
@@ -28,6 +37,10 @@ public class BookSaleProcessor {
 		return totalPrice;
 	}
 	
+	/**
+	 * This method calculates the discounted price of the books
+	 * @return discounted price
+	 */
 	public Double getDiscountedPrice() {
 		Double totalPrice = new Double(0);
 		int booksCount = books.size();
@@ -55,7 +68,12 @@ public class BookSaleProcessor {
 		return totalPrice;
 	}
 	
-	public static double round(double value, int places) {
+	/**
+	 * @param value
+	 * @param places
+	 * @return rounded value
+	 */
+	public double round(double value, int places) {
 	    if (places < 0) throw new IllegalArgumentException();
 
 	    BigDecimal bd = new BigDecimal(value);

@@ -7,67 +7,84 @@ import com.interview.harry.business.BookSaleProcessor;
 import com.interview.harry.business.CurrentDiscountRule;
 import com.interview.harry.business.ShoppingCart;
 import com.interview.harry.constants.HarrySeries;
-//Desktop application for the given Book sale problem
-//Running this class, user can manage cart, view cart and checkout.
+/**
+ * Desktop application for the given Book sale problem
+ * Running this class, user can manage cart, view cart and checkout.
+ * @author Sainath
+ *
+ */
 public class BookSaleConsole {
 	private ShoppingCart cart;
+	public Scanner reader = null;
 	public BookSaleConsole(ShoppingCart shoppingCart) {
 		this.cart = shoppingCart;
 	}
 
+	@Override
+	protected void finalize() throws Throwable {
+		super.finalize();
+		reader.close();
+		System.out.println("reader closed successfully");
+	}
+
 	public static void main(String[] args) {
-		BookSaleConsole console = new BookSaleConsole(new ShoppingCart());
-		System.out.println("***********************************");
-		System.out.println("WelCome to My Publishing House");
-		System.out.println("***********************************");
-		boolean flag = true;
-		while(flag) {
-			System.out.println("\n\n\nSelect Any Option...........\n");
-			System.out.println("1. View Book Catalog");
-			System.out.println("2. Add Book to Cart");
-			System.out.println("3. Update Book Count to Cart");
-			System.out.println("4. Remove Book from Cart");
-			System.out.println("5. View My Cart");
-			System.out.println("6. Checkout");
-			System.out.println("7. Exit");
-			System.out.print("Please enter your Choice: ");
-			Scanner reader = new Scanner(System.in);
-			int choice = reader.nextInt();
-			System.out.print("\n");
-			switch (choice) {
-			case 1:
-				console.showCatalog();
-				break;
-			case 2: 
-				console.addBook();
-				break;
-			case 3:
-				console.updateCart();
-				break;
-			case 4:
-				console.removeBook();
-				break;
-			case 5:
-				console.viewCart(true);
-				break;
-			case 6:
-				flag = false;
-				console.viewCart(true);
-				System.out.println("*******************************************************************");
-				System.out.println("\n\n..........Thanks For Shopping with Us, Have a Nice Day........");
-				System.out.println("*******************************************************************");
-				break;
-			case 7:
-				flag = false;
-				System.out.println("*******************************************************************");
-				System.out.println("..........Thanks For visiting our Store, Have a Nice Day........");
-				System.out.println("*******************************************************************");
-				break;
-			default:
-				System.out.println("Please enter from 1 to 7");
-				break;
+		BookSaleConsole console = null;
+		try {
+			console = new BookSaleConsole(new ShoppingCart());
+			console.reader = new Scanner(System.in);
+			System.out.println("***********************************");
+			System.out.println("WelCome to My Publishing House");
+			System.out.println("***********************************");
+			boolean flag = true;
+			while(flag) {
+				System.out.println("\n\n\nSelect Any Option...........\n");
+				System.out.println("1. View Book Catalog");
+				System.out.println("2. Add Book to Cart");
+				System.out.println("3. Update Book Count to Cart");
+				System.out.println("4. Remove Book from Cart");
+				System.out.println("5. View My Cart");
+				System.out.println("6. Checkout");
+				System.out.println("7. Exit");
+				System.out.print("Please enter your Choice: ");
+				int choice = console.reader.nextInt();
+				System.out.print("\n");
+				switch (choice) {
+				case 1:
+					console.showCatalog();
+					break;
+				case 2: 
+					console.addBook();
+					break;
+				case 3:
+					console.updateCart();
+					break;
+				case 4:
+					console.removeBook();
+					break;
+				case 5:
+					console.viewCart(true);
+					break;
+				case 6:
+					flag = false;
+					console.viewCart(true);
+					System.out.println("*******************************************************************");
+					System.out.println(".............Thanks For Shopping with Us, Have a Nice Day........");
+					System.out.println("*******************************************************************");
+					break;
+				case 7:
+					flag = false;
+					System.out.println("*******************************************************************");
+					System.out.println("..........Thanks For visiting our Store, Have a Nice Day........");
+					System.out.println("*******************************************************************");
+					break;
+				default:
+					System.out.println("Please enter from 1 to 7");
+					break;
+				}
+				
 			}
-			
+		} finally {
+			console.reader.close();
 		}
 	}
 
@@ -89,7 +106,6 @@ public class BookSaleConsole {
 	private void removeBook() {
 		viewCart(false);
 		System.out.println("\n\nPlease enter Book Id to remove from cart");
-		Scanner reader = new Scanner(System.in);
 		int choice = reader.nextInt();
 		HarrySeries book = HarrySeries.getHarrySeriesById(choice);
 		if(book == null) {
@@ -103,7 +119,6 @@ public class BookSaleConsole {
 	private void updateCart() {
 		viewCart(false);
 		System.out.println("Updating Book Copies\n\nPlease enter Book Id");
-		Scanner reader = new Scanner(System.in);
 		int choice = reader.nextInt();
 		HarrySeries book = HarrySeries.getHarrySeriesById(choice);
 		if(book == null) {
@@ -124,7 +139,6 @@ public class BookSaleConsole {
 	private void addBook() {
 		showCatalog();
 		System.out.println("\nPlease Enter Book Id: ");
-		Scanner reader = new Scanner(System.in);
 		int choice = reader.nextInt();
 		HarrySeries book = HarrySeries.getHarrySeriesById(choice);
 		if(book == null) {
@@ -142,7 +156,6 @@ public class BookSaleConsole {
 
 	private int addCopies(HarrySeries book) {
 		System.out.println("\nNumber of Copies of "+ book.getBookName() + ": ");
-		Scanner reader = new Scanner(System.in);
 		int count = reader.nextInt();
 		if(count > 0) {
 			return count;
